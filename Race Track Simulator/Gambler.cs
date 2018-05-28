@@ -28,7 +28,7 @@ namespace Race_Track_Simulator
             //Reset my bet so it's zero
         }
 
-        public bool PlaceBet(int Amount, int Dog)
+        public bool PlaceBet(int Amount, int Squirrel)
         {
             //Place a new bet and store it in my bet field
             //Return true if the gambler had enough money to bet

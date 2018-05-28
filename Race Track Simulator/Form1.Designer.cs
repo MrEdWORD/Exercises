@@ -37,7 +37,7 @@
             this.lblBetsGambler1 = new System.Windows.Forms.Label();
             this.lblBetsGambler2 = new System.Windows.Forms.Label();
             this.lblBetsGambler3 = new System.Windows.Forms.Label();
-            this.numUpDownDog = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownSquirrel = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSelectedGambler = new System.Windows.Forms.Label();
             this.btnBet = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRaceTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownDog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownSquirrel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer3)).BeginInit();
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.lblBetsGambler1);
             this.groupBox1.Controls.Add(this.lblBetsGambler2);
             this.groupBox1.Controls.Add(this.lblBetsGambler3);
-            this.groupBox1.Controls.Add(this.numUpDownDog);
+            this.groupBox1.Controls.Add(this.numUpDownSquirrel);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lblSelectedGambler);
             this.groupBox1.Controls.Add(this.btnBet);
@@ -153,18 +153,18 @@
             this.lblBetsGambler3.TabIndex = 9;
             this.lblBetsGambler3.Text = "Kat\'s bet";
             // 
-            // numUpDownDog
+            // numUpDownSquirrel
             // 
-            this.numUpDownDog.Location = new System.Drawing.Point(420, 164);
-            this.numUpDownDog.Minimum = new decimal(new int[] {
+            this.numUpDownSquirrel.Location = new System.Drawing.Point(420, 164);
+            this.numUpDownSquirrel.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numUpDownDog.Name = "numUpDownDog";
-            this.numUpDownDog.Size = new System.Drawing.Size(43, 26);
-            this.numUpDownDog.TabIndex = 8;
-            this.numUpDownDog.Value = new decimal(new int[] {
+            this.numUpDownSquirrel.Name = "numUpDownSquirrel";
+            this.numUpDownSquirrel.Size = new System.Drawing.Size(43, 26);
+            this.numUpDownSquirrel.TabIndex = 8;
+            this.numUpDownSquirrel.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -222,9 +222,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(7, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Minimum bet";
+            this.label1.Text = "Minimum bet: ";
             // 
             // rdoGambler3
             // 
@@ -306,7 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownDog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownSquirrel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer3)).EndInit();
@@ -327,7 +327,7 @@
         private System.Windows.Forms.Button btnBet;
         private System.Windows.Forms.NumericUpDown numUpDownBet;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numUpDownDog;
+        private System.Windows.Forms.NumericUpDown numUpDownSquirrel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRace;
         private System.Windows.Forms.Label label6;
