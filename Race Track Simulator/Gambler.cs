@@ -19,16 +19,17 @@ namespace Race_Track_Simulator
 
         public void UpdateLabels()
         {
-            MyRadioButton.Text = Name + "has " + Cash + " bucks";
+            MyRadioButton.Text = Name + " has " + Cash + " bucks";
+
             if (MyBet == null)
             {
                 MyLabel.Text = Name + " hasn't placed a bet";
-            }            
+            }
         }
 
         public void ClearBet()
         {
-            //Reset my bet so it's zero
+            MyBet = null;
         }
 
         public bool PlaceBet(int amount, int squirrel)
@@ -39,15 +40,18 @@ namespace Race_Track_Simulator
             //Return true if the gambler had enough money to bet
             if (MyBet.Amount <= Cash)
             {
-                MyLabel.Text = Name + " bets " + amount + "bucks on squirrel# " + squirrel;
+                Cash -= amount;
+                MyLabel.Text = MyBet.GetDescription();
                 return true;
             }
+
+            MyLabel.Text = MyBet.GetDescription();
             return false;
         }
 
         public void Collect(int winner)
         {
-            //Ask my bet to pay out -- use the Bet object
+            MyBet.PayOut(winner);
         }
     }
 }

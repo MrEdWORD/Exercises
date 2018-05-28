@@ -14,20 +14,26 @@ namespace Race_Track_Simulator
 
         public string GetDescription()
         {
-
-            //Return a string that says who placed the bet, how much
-            //cash was bet, and which squirrel he bet on ("Joe bets 8 on squirrel
-            //#4"). If the amount is zero, no bet was placed.
-            //("Joe hasn't placed a bet").
-
-            //Just need to assemble a string or message from different bits of data here
+            if (Amount != 0)
+            {
+                return Bettor.Name + " bets " + Amount + " bucks on squirrel# " + Squirrel;
+            }
+            else
+            {
+                return Bettor.Name + " hasn't placed a bet";
+            }
         }
 
-        public int PayOut(int Winner)
+        public int PayOut(int winner)
         {
-            //The parameter is the winner of the race. If the squirrel won,
-            //return the amount bet. Otherwise, return the negative of
-            //the amount bet.
+            if (winner == Squirrel)
+            {
+                return Amount;
+            }
+            else
+            {
+                return -Amount;
+            }
         }
     }
 }

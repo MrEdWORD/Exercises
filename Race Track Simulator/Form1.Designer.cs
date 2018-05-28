@@ -105,7 +105,6 @@
             // 
             // btnRace
             // 
-            this.btnRace.Enabled = false;
             this.btnRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRace.Location = new System.Drawing.Point(631, 154);
             this.btnRace.Name = "btnRace";
@@ -191,11 +190,9 @@
             this.lblSelectedGambler.Size = new System.Drawing.Size(77, 20);
             this.lblSelectedGambler.TabIndex = 6;
             this.lblSelectedGambler.Text = "Gambler";
-            this.lblSelectedGambler.Visible = false;
             // 
             // btnBet
             // 
-            this.btnBet.Enabled = false;
             this.btnBet.Location = new System.Drawing.Point(90, 162);
             this.btnBet.Name = "btnBet";
             this.btnBet.Size = new System.Drawing.Size(62, 29);
@@ -241,7 +238,6 @@
             this.rdoGambler3.TabStop = true;
             this.rdoGambler3.Text = "Kat";
             this.rdoGambler3.UseVisualStyleBackColor = true;
-            this.rdoGambler3.CheckedChanged += new System.EventHandler(this.rdoGambler3_CheckedChanged);
             // 
             // rdoGambler2
             // 
@@ -253,7 +249,6 @@
             this.rdoGambler2.TabStop = true;
             this.rdoGambler2.Text = "Megan";
             this.rdoGambler2.UseVisualStyleBackColor = true;
-            this.rdoGambler2.CheckedChanged += new System.EventHandler(this.rdoGambler2_CheckedChanged);
             // 
             // rdoGambler1
             // 
@@ -265,7 +260,6 @@
             this.rdoGambler1.TabStop = true;
             this.rdoGambler1.Text = "Drey";
             this.rdoGambler1.UseVisualStyleBackColor = true;
-            this.rdoGambler1.CheckedChanged += new System.EventHandler(this.rdoGambler1_CheckedChanged);
             // 
             // pictureBoxRacer2
             // 
