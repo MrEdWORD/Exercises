@@ -14,6 +14,7 @@ namespace Race_Track_Simulator
 
         public string GetDescription()
         {
+
             //Return a string that says who placed the bet, how much
             //cash was bet, and which squirrel he bet on ("Joe bets 8 on squirrel
             //#4"). If the amount is zero, no bet was placed.

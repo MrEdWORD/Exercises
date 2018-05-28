@@ -42,7 +42,7 @@
             this.lblSelectedGambler = new System.Windows.Forms.Label();
             this.btnBet = new System.Windows.Forms.Button();
             this.numUpDownBet = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMinBet = new System.Windows.Forms.Label();
             this.rdoGambler3 = new System.Windows.Forms.RadioButton();
             this.rdoGambler2 = new System.Windows.Forms.RadioButton();
             this.rdoGambler1 = new System.Windows.Forms.RadioButton();
@@ -91,7 +91,7 @@
             this.groupBox1.Controls.Add(this.lblSelectedGambler);
             this.groupBox1.Controls.Add(this.btnBet);
             this.groupBox1.Controls.Add(this.numUpDownBet);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblMinBet);
             this.groupBox1.Controls.Add(this.rdoGambler3);
             this.groupBox1.Controls.Add(this.rdoGambler2);
             this.groupBox1.Controls.Add(this.rdoGambler1);
@@ -105,6 +105,7 @@
             // 
             // btnRace
             // 
+            this.btnRace.Enabled = false;
             this.btnRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRace.Location = new System.Drawing.Point(631, 154);
             this.btnRace.Name = "btnRace";
@@ -112,6 +113,7 @@
             this.btnRace.TabIndex = 13;
             this.btnRace.Text = "Race!";
             this.btnRace.UseVisualStyleBackColor = true;
+            this.btnRace.Click += new System.EventHandler(this.btnRace_Click);
             // 
             // label6
             // 
@@ -189,15 +191,18 @@
             this.lblSelectedGambler.Size = new System.Drawing.Size(77, 20);
             this.lblSelectedGambler.TabIndex = 6;
             this.lblSelectedGambler.Text = "Gambler";
+            this.lblSelectedGambler.Visible = false;
             // 
             // btnBet
             // 
+            this.btnBet.Enabled = false;
             this.btnBet.Location = new System.Drawing.Point(90, 162);
             this.btnBet.Name = "btnBet";
             this.btnBet.Size = new System.Drawing.Size(62, 29);
             this.btnBet.TabIndex = 5;
             this.btnBet.Text = "Bets";
             this.btnBet.UseVisualStyleBackColor = true;
+            this.btnBet.Click += new System.EventHandler(this.btnBet_Click);
             // 
             // numUpDownBet
             // 
@@ -216,15 +221,15 @@
             0,
             0});
             // 
-            // label1
+            // lblMinBet
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Minimum bet: ";
+            this.lblMinBet.AutoSize = true;
+            this.lblMinBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinBet.Location = new System.Drawing.Point(7, 37);
+            this.lblMinBet.Name = "lblMinBet";
+            this.lblMinBet.Size = new System.Drawing.Size(120, 20);
+            this.lblMinBet.TabIndex = 3;
+            this.lblMinBet.Text = "Minimum bet: ";
             // 
             // rdoGambler3
             // 
@@ -236,6 +241,7 @@
             this.rdoGambler3.TabStop = true;
             this.rdoGambler3.Text = "Kat";
             this.rdoGambler3.UseVisualStyleBackColor = true;
+            this.rdoGambler3.CheckedChanged += new System.EventHandler(this.rdoGambler3_CheckedChanged);
             // 
             // rdoGambler2
             // 
@@ -247,6 +253,7 @@
             this.rdoGambler2.TabStop = true;
             this.rdoGambler2.Text = "Megan";
             this.rdoGambler2.UseVisualStyleBackColor = true;
+            this.rdoGambler2.CheckedChanged += new System.EventHandler(this.rdoGambler2_CheckedChanged);
             // 
             // rdoGambler1
             // 
@@ -258,6 +265,7 @@
             this.rdoGambler1.TabStop = true;
             this.rdoGambler1.Text = "Drey";
             this.rdoGambler1.UseVisualStyleBackColor = true;
+            this.rdoGambler1.CheckedChanged += new System.EventHandler(this.rdoGambler1_CheckedChanged);
             // 
             // pictureBoxRacer2
             // 
@@ -326,7 +334,7 @@
         private System.Windows.Forms.Label lblSelectedGambler;
         private System.Windows.Forms.Button btnBet;
         private System.Windows.Forms.NumericUpDown numUpDownBet;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMinBet;
         private System.Windows.Forms.NumericUpDown numUpDownSquirrel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRace;
