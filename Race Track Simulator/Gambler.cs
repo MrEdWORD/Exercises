@@ -42,10 +42,10 @@ namespace Race_Track_Simulator
             {
                 Cash -= amount;
                 MyLabel.Text = MyBet.GetDescription();
+                UpdateLabels();
                 return true;
             }
 
-            MyLabel.Text = MyBet.GetDescription();
             return false;
         }
 

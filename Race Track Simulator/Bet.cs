@@ -16,7 +16,7 @@ namespace Race_Track_Simulator
         {
             if (Amount != 0)
             {
-                return Bettor.Name + " bets " + Amount + " bucks on squirrel# " + Squirrel;
+                return Bettor.Name + " bets " + Amount + " bucks on squirrel #" + Squirrel;
             }
             else
             {
