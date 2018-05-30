@@ -61,6 +61,7 @@
             // 
             // pictureBoxRaceTrack
             // 
+            this.pictureBoxRaceTrack.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxRaceTrack.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRaceTrack.Image")));
             this.pictureBoxRaceTrack.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxRaceTrack.Name = "pictureBoxRaceTrack";
@@ -71,10 +72,11 @@
             // 
             // pictureBoxRacer1
             // 
+            this.pictureBoxRacer1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxRacer1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRacer1.Image")));
-            this.pictureBoxRacer1.Location = new System.Drawing.Point(48, 13);
+            this.pictureBoxRacer1.Location = new System.Drawing.Point(19, 18);
             this.pictureBoxRacer1.Name = "pictureBoxRacer1";
-            this.pictureBoxRacer1.Size = new System.Drawing.Size(48, 51);
+            this.pictureBoxRacer1.Size = new System.Drawing.Size(35, 40);
             this.pictureBoxRacer1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRacer1.TabIndex = 1;
             this.pictureBoxRacer1.TabStop = false;
@@ -110,7 +112,7 @@
             this.btnRace.Location = new System.Drawing.Point(631, 154);
             this.btnRace.Name = "btnRace";
             this.btnRace.Size = new System.Drawing.Size(139, 43);
-            this.btnRace.TabIndex = 13;
+            this.btnRace.TabIndex = 6;
             this.btnRace.Text = "Race!";
             this.btnRace.UseVisualStyleBackColor = true;
             this.btnRace.Click += new System.EventHandler(this.btnRace_Click);
@@ -132,7 +134,7 @@
             this.lblBetsGambler1.Location = new System.Drawing.Point(413, 62);
             this.lblBetsGambler1.Name = "lblBetsGambler1";
             this.lblBetsGambler1.Size = new System.Drawing.Size(357, 24);
-            this.lblBetsGambler1.TabIndex = 11;
+            this.lblBetsGambler1.TabIndex = 7;
             this.lblBetsGambler1.Text = "Drey\'s bet";
             // 
             // lblBetsGambler2
@@ -142,7 +144,7 @@
             this.lblBetsGambler2.Location = new System.Drawing.Point(413, 92);
             this.lblBetsGambler2.Name = "lblBetsGambler2";
             this.lblBetsGambler2.Size = new System.Drawing.Size(357, 24);
-            this.lblBetsGambler2.TabIndex = 10;
+            this.lblBetsGambler2.TabIndex = 8;
             this.lblBetsGambler2.Text = "Megan\'s bet";
             // 
             // lblBetsGambler3
@@ -170,7 +172,7 @@
             0});
             this.numUpDownSquirrel.Name = "numUpDownSquirrel";
             this.numUpDownSquirrel.Size = new System.Drawing.Size(43, 26);
-            this.numUpDownSquirrel.TabIndex = 8;
+            this.numUpDownSquirrel.TabIndex = 4;
             this.numUpDownSquirrel.Value = new decimal(new int[] {
             1,
             0,
@@ -193,9 +195,9 @@
             this.lblSelectedGambler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectedGambler.Location = new System.Drawing.Point(7, 167);
             this.lblSelectedGambler.Name = "lblSelectedGambler";
-            this.lblSelectedGambler.Size = new System.Drawing.Size(23, 20);
+            this.lblSelectedGambler.Size = new System.Drawing.Size(35, 20);
             this.lblSelectedGambler.TabIndex = 6;
-            this.lblSelectedGambler.Text = "G";
+            this.lblSelectedGambler.Text = "SG";
             // 
             // btnBet
             // 
@@ -217,7 +219,7 @@
             0});
             this.numUpDownBet.Name = "numUpDownBet";
             this.numUpDownBet.Size = new System.Drawing.Size(70, 26);
-            this.numUpDownBet.TabIndex = 4;
+            this.numUpDownBet.TabIndex = 3;
             this.numUpDownBet.Value = new decimal(new int[] {
             5,
             0,
@@ -272,30 +274,33 @@
             // 
             // pictureBoxRacer2
             // 
+            this.pictureBoxRacer2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxRacer2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRacer2.Image")));
-            this.pictureBoxRacer2.Location = new System.Drawing.Point(48, 68);
+            this.pictureBoxRacer2.Location = new System.Drawing.Point(19, 75);
             this.pictureBoxRacer2.Name = "pictureBoxRacer2";
-            this.pictureBoxRacer2.Size = new System.Drawing.Size(48, 51);
+            this.pictureBoxRacer2.Size = new System.Drawing.Size(35, 40);
             this.pictureBoxRacer2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRacer2.TabIndex = 14;
             this.pictureBoxRacer2.TabStop = false;
             // 
             // pictureBoxRacer3
             // 
+            this.pictureBoxRacer3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxRacer3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRacer3.Image")));
-            this.pictureBoxRacer3.Location = new System.Drawing.Point(48, 123);
+            this.pictureBoxRacer3.Location = new System.Drawing.Point(19, 132);
             this.pictureBoxRacer3.Name = "pictureBoxRacer3";
-            this.pictureBoxRacer3.Size = new System.Drawing.Size(48, 51);
+            this.pictureBoxRacer3.Size = new System.Drawing.Size(35, 40);
             this.pictureBoxRacer3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRacer3.TabIndex = 15;
             this.pictureBoxRacer3.TabStop = false;
             // 
             // pictureBoxRacer4
             // 
+            this.pictureBoxRacer4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxRacer4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRacer4.Image")));
-            this.pictureBoxRacer4.Location = new System.Drawing.Point(48, 174);
+            this.pictureBoxRacer4.Location = new System.Drawing.Point(19, 182);
             this.pictureBoxRacer4.Name = "pictureBoxRacer4";
-            this.pictureBoxRacer4.Size = new System.Drawing.Size(48, 51);
+            this.pictureBoxRacer4.Size = new System.Drawing.Size(35, 40);
             this.pictureBoxRacer4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRacer4.TabIndex = 16;
             this.pictureBoxRacer4.TabStop = false;
@@ -312,7 +317,7 @@
             this.Controls.Add(this.pictureBoxRacer1);
             this.Controls.Add(this.pictureBoxRaceTrack);
             this.Name = "Form1";
-            this.Text = "A Day at the Races";
+            this.Text = "Bob\'s Squirrel Race Betting Parlor";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRaceTrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRacer1)).EndInit();
             this.groupBox1.ResumeLayout(false);

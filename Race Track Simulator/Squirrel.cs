@@ -20,11 +20,11 @@ namespace Race_Track_Simulator
         public bool Run()
         {
             //Move forward either 1, 2, 3, or 4 spaces at random
-            Location += Randomizer.Next(5);
+            int distance = Randomizer.Next(5);
 
             //Update the position of my PictureBox on the form
             Point p = MyPictureBox.Location; //Get current location of picture
-            p.X += Location; //Add the randomly generated distance to X coordinate
+            p.X += distance; //Add the randomly generated distance to X coordinate
             MyPictureBox.Location = p; //Update the picture box location on the form
 
             //Return true if I won the race
