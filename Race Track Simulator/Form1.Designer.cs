@@ -32,6 +32,7 @@
             this.pictureBoxRaceTrack = new System.Windows.Forms.PictureBox();
             this.pictureBoxRacer1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClearBet = new System.Windows.Forms.Button();
             this.btnRace = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lblBetsGambler1 = new System.Windows.Forms.Label();
@@ -83,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClearBet);
             this.groupBox1.Controls.Add(this.btnRace);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lblBetsGambler1);
@@ -104,6 +106,18 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "A Happy Betting Parlor";
+            // 
+            // btnClearBet
+            // 
+            this.btnClearBet.Enabled = false;
+            this.btnClearBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearBet.Location = new System.Drawing.Point(469, 165);
+            this.btnClearBet.Name = "btnClearBet";
+            this.btnClearBet.Size = new System.Drawing.Size(58, 25);
+            this.btnClearBet.TabIndex = 13;
+            this.btnClearBet.Text = "Clear Bet";
+            this.btnClearBet.UseVisualStyleBackColor = true;
+            this.btnClearBet.Click += new System.EventHandler(this.btnClearBet_Click);
             // 
             // btnRace
             // 
@@ -353,6 +367,7 @@
         private System.Windows.Forms.PictureBox pictureBoxRacer2;
         private System.Windows.Forms.PictureBox pictureBoxRacer3;
         private System.Windows.Forms.PictureBox pictureBoxRacer4;
+        private System.Windows.Forms.Button btnClearBet;
     }
 }
 

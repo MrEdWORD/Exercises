@@ -14,13 +14,14 @@ namespace Race_Track_Simulator
         public int StartingPosition; //Where the squirrel's PictureBox starts
         public int RacetrackLength;
         public PictureBox MyPictureBox = null; //Reference to the picturebox control on the form
-        public int Location = 0; //Location of the squirrel on race track
+        public int Location; //Location of the squirrel on race track
         public Random Randomizer; //An instance of Random
 
         public bool Run()
         {
             //Move forward either 1, 2, 3, or 4 spaces at random
             int distance = Randomizer.Next(5);
+            Location += distance;
 
             //Update the position of my PictureBox on the form
             Point p = MyPictureBox.Location; //Get current location of picture
@@ -28,7 +29,7 @@ namespace Race_Track_Simulator
             MyPictureBox.Location = p; //Update the picture box location on the form
 
             //Return true if I won the race
-            if (MyPictureBox.Location.X == RacetrackLength)
+            if (Location >= RacetrackLength)
             {
                 return true;
             }
@@ -41,7 +42,7 @@ namespace Race_Track_Simulator
             Point p = MyPictureBox.Location;
             p.X = StartingPosition;
             MyPictureBox.Location = p;
-            Location = 0;
+            Location = StartingPosition;
         }
     }
 }
