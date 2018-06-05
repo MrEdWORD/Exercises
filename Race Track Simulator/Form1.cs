@@ -73,8 +73,6 @@ namespace Race_Track_Simulator
 
         private void btnBet_Click(object sender, EventArgs e)
         {
-            //TODO need messaging when player tries to make a bet with not enough cash
-
             //If gambler has already bet, disable betting button but enable clear bet button
             bool betSucceeded;
 
@@ -87,7 +85,16 @@ namespace Race_Track_Simulator
                     btnBet.Enabled = false;
                     btnClearBet.Enabled = true;
                 }
+                else
+                {
+                    btnBet.Enabled = true;
+                    btnClearBet.Enabled = false;
+                    MessageBox.Show(gambler[0].Name + "does not have enough cash to make that bet!");
+                }
+
+                UpdateRaceButton();
             }
+
             else if (rdoGambler2.Checked)
             {
                 //Place bet for gamblers[1]
@@ -97,7 +104,16 @@ namespace Race_Track_Simulator
                     btnBet.Enabled = false;
                     btnClearBet.Enabled = true;
                 }
+                else
+                {
+                    btnBet.Enabled = true;
+                    btnClearBet.Enabled = false;
+                    MessageBox.Show(gambler[1].Name + "does not have enough cash to make that bet!");
+                }
+
+                UpdateRaceButton();
             }
+
             else if (rdoGambler3.Checked)
             {
                 //Place bet for gamblers[2]
@@ -107,8 +123,19 @@ namespace Race_Track_Simulator
                     btnBet.Enabled = false;
                     btnClearBet.Enabled = true;
                 }
-            }
+                else
+                {
+                    btnBet.Enabled = true;
+                    btnClearBet.Enabled = false;
+                    MessageBox.Show(gambler[2].Name + "does not have enough cash to make that bet!");
+                }
 
+                UpdateRaceButton();
+            }
+        }
+
+        private void UpdateRaceButton()
+        {
             //If all gamblers have bet, enable race button
             if (gambler[0].MyBet != null & gambler[1].MyBet != null & gambler[2].MyBet != null)
             {
@@ -118,7 +145,6 @@ namespace Race_Track_Simulator
             {
                 btnRace.Enabled = false;
             }
-            
         }
 
         private void rdoGambler1_CheckedChanged(object sender, EventArgs e)
@@ -137,6 +163,7 @@ namespace Race_Track_Simulator
                 btnClearBet.Enabled = true;
             }
 
+            UpdateRaceButton();
 
         }
 
@@ -155,6 +182,8 @@ namespace Race_Track_Simulator
                 btnBet.Enabled = false;
                 btnClearBet.Enabled = true;
             }
+
+            UpdateRaceButton();
         }
 
         private void rdoGambler3_CheckedChanged(object sender, EventArgs e)
@@ -172,6 +201,8 @@ namespace Race_Track_Simulator
                 btnBet.Enabled = false;
                 btnClearBet.Enabled = true;
             }
+
+            UpdateRaceButton();
         }
 
         private void btnClearBet_Click(object sender, EventArgs e)
@@ -181,6 +212,7 @@ namespace Race_Track_Simulator
             //Update the labels
             //Enable bet button
             //Disable clear bet button
+            //Disable race button
 
             if (rdoGambler1.Checked)
             {
@@ -206,6 +238,8 @@ namespace Race_Track_Simulator
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
             }
+
+            UpdateRaceButton();
         }
     }
 }

@@ -45,8 +45,11 @@ namespace Race_Track_Simulator
                 UpdateLabels();
                 return true;
             }
-
-            return false;
+            else
+            {
+                ClearBet();
+                return false;
+            }
         }
 
         public void Collect(int winner)
