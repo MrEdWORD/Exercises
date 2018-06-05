@@ -51,7 +51,7 @@ namespace Race_Track_Simulator
 
         public void Collect(int winner)
         {
-            MyBet.PayOut(winner);
+            Cash += MyBet.PayOut(winner);
         }
     }
 }

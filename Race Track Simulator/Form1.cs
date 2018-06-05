@@ -27,7 +27,6 @@ namespace Race_Track_Simulator
             gambler[1].UpdateLabels();
             gambler[2].UpdateLabels();
 
-            //TODO Random isn't working. Squirrels are generating the same 'random' numbers.
             //Note: the specific values below for StartingPosition (19) and RacetrackLength (-91) provide a more visually appealing location of the squirrel image
             squirrels[0] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer1, Randomizer = randomizer };
             squirrels[1] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer2, Randomizer = randomizer };
@@ -37,7 +36,7 @@ namespace Race_Track_Simulator
 
         private void btnRace_Click(object sender, EventArgs e)
         {
-            //Reset location before proceeding with race
+            //Reset squirrel location before proceeding with race
             foreach (Squirrel s in squirrels)
             {
                 s.TakeStartingPosition();
@@ -47,14 +46,26 @@ namespace Race_Track_Simulator
 
             while (!isWinner)
             {
+                btnRace.Enabled = false;
+
+                //Start squirrel race
                 for (int i = 0; i < squirrels.Length; i++)
                 {
-                    Application.DoEvents();
+                    Application.DoEvents(); //TODO DoEvents is evil. Replace with multithreading approach.
                     bool winningRun = squirrels[i].Run();
                     if (winningRun)
                     {
                         isWinner = true;
-                        MessageBox.Show("We have a winner - squirrel #" + i++ + "!");
+                        MessageBox.Show("We have a winner - squirrel #" + i + "!");
+
+                        //Collect earnings/loss from the gamblers based on their bets
+                        foreach (Gambler g in gambler)
+                        {
+                            g.Collect(i + 1);
+                            g.UpdateLabels();
+                        }
+
+                        btnRace.Enabled = true;
                     }
                 }
             }
