@@ -12,7 +12,7 @@ namespace Race_Track_Simulator
 {
     public partial class Form1 : Form
     {
-        Gambler[] gambler = new Gambler[3];
+        Gambler[] gamblers = new Gambler[3];
         Squirrel[] squirrels = new Squirrel[4];
         Random randomizer = new Random(); //Ensures all of the Squirrel objects share a Random object to avoid an issue where all of the squirrels generate the same sequence of random numbers
 
@@ -20,124 +20,125 @@ namespace Race_Track_Simulator
         {
             InitializeComponent();
 
-            gambler[0] = new Gambler() { Name = "Drey", MyBet = null, Cash = 10, MyLabel = lblBetsGambler1, MyRadioButton = rdoGambler1 };
-            gambler[1] = new Gambler() { Name = "Megan", MyBet = null, Cash = 25, MyLabel = lblBetsGambler2, MyRadioButton = rdoGambler2 };
-            gambler[2] = new Gambler() { Name = "Kat", MyBet = null, Cash = 300, MyLabel = lblBetsGambler3, MyRadioButton = rdoGambler3 };
-            gambler[0].UpdateLabels();
-            gambler[1].UpdateLabels();
-            gambler[2].UpdateLabels();
+            //Instantiate Gambler objects and update their labels on the form to shower user their cash/bet info
+            gamblers[0] = new Gambler() { Name = "Drey", MyBet = null, Cash = 50, MyLabel = lblBetsGambler1, MyRadioButton = rdoGambler1 };
+            gamblers[1] = new Gambler() { Name = "Megan", MyBet = null, Cash = 100, MyLabel = lblBetsGambler2, MyRadioButton = rdoGambler2 };
+            gamblers[2] = new Gambler() { Name = "Kat", MyBet = null, Cash = 125, MyLabel = lblBetsGambler3, MyRadioButton = rdoGambler3 };
 
-            //Note: the specific values below for StartingPosition (19) and RacetrackLength (-91) provide a more visually appealing location of the squirrel image
+            //Instantiate Squirrel objects
+            //Note: the specific values below for StartingPosition (19) and RacetrackLength (-91) provide a more visually appealing location of the squirrel image in the UI
             squirrels[0] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer1, Randomizer = randomizer };
             squirrels[1] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer2, Randomizer = randomizer };
             squirrels[2] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer3, Randomizer = randomizer };
             squirrels[3] = new Squirrel() { StartingPosition = 19, RacetrackLength = (pictureBoxRaceTrack.Width - 91), MyPictureBox = pictureBoxRacer4, Randomizer = randomizer };
+
+            UpdateSquirrelAndGamblerUI();
         }
 
         private void btnRace_Click(object sender, EventArgs e)
         {
-            //Reset squirrel location before proceeding with race
-            foreach (Squirrel s in squirrels)
-            {
-                s.TakeStartingPosition();
-            }
+            StartRace();
+            UpdateSquirrelAndGamblerUI();
+        }
 
-            bool isWinner = false;
+        private void StartRace()
+        {
+            //Race until one of the squirrels crosses the finish line
 
-            while (!isWinner)
+            bool thereIsAWinner = false;
+            while (!thereIsAWinner)
             {
                 btnRace.Enabled = false;
 
-                //Start squirrel race
-                for (int i = 0; i < squirrels.Length; i++)
+                for (int squirrel = 0; squirrel < squirrels.Length; squirrel++)
                 {
                     Application.DoEvents(); //TODO DoEvents is evil. Replace with multithreading approach.
-                    bool winningRun = squirrels[i].Run();
-                    if (winningRun)
+                    if (squirrels[squirrel].Run())
                     {
-                        isWinner = true;
-                        MessageBox.Show("We have a winner - squirrel #" + i + "!");
-
-                        //Collect earnings/loss from the gamblers based on their bets
-                        foreach (Gambler g in gambler)
-                        {
-                            g.Collect(i + 1);
-                            g.UpdateLabels();
-                        }
-
+                        MessageBox.Show("We have a winner - squirrel #" + (squirrel + 1) + "!");
+                        CollectRaceWinnings(squirrel);
+                        thereIsAWinner = true;
                         btnRace.Enabled = true;
+                        break;
                     }
                 }
             }
         }
 
+        private void CollectRaceWinnings(int squirrel)
+        {
+            //Collect earnings/loss from the gamblers based on their bets
+
+            foreach (Gambler gambler in gamblers)
+            {
+                gambler.Collect(squirrel + 1);
+            }
+        }
+
+        private void UpdateSquirrelAndGamblerUI()
+        {
+            //Resets squirrel image to front of race line and gambler's cash/bet information
+
+            foreach (Squirrel squirrel in squirrels)
+            {
+                squirrel.TakeStartingPosition();
+            }
+
+            foreach (Gambler gambler in gamblers)
+            {
+                gambler.UpdateLabels();
+            }
+        }
+
+        private void Bet(Gambler gambler, int betAmount, int chosenSquirrel)
+        {
+            //Places bet if the gambler has enough cash available
+
+            if (gambler.PlaceBet(betAmount, chosenSquirrel))
+            {
+                btnBet.Enabled = false;
+                btnClearBet.Enabled = true;
+            }
+            else
+            {
+                btnBet.Enabled = true;
+                btnClearBet.Enabled = false;
+                MessageBox.Show(gambler.Name + "does not have enough cash to make that bet!");
+            }
+        }
+
         private void btnBet_Click(object sender, EventArgs e)
         {
-            //If gambler has already bet, disable betting button but enable clear bet button
-            bool betSucceeded;
+            //Places bet for a given gambler and updates the UI appropriately
+            //TODO FIX: player can keep betting/racing after they've lost enough where their cash is negative
+            
+            int betAmount = (int)numUpDownBet.Value;
+            int chosenSquirrel = (int)numUpDownSquirrel.Value;
 
             if (rdoGambler1.Checked)
             {
-                //Place bet for gamblers[0]
-                betSucceeded = gambler[0].PlaceBet((int)numUpDownBet.Value, (int)numUpDownSquirrel.Value);
-                if (betSucceeded)
-                {
-                    btnBet.Enabled = false;
-                    btnClearBet.Enabled = true;
-                }
-                else
-                {
-                    btnBet.Enabled = true;
-                    btnClearBet.Enabled = false;
-                    MessageBox.Show(gambler[0].Name + "does not have enough cash to make that bet!");
-                }
-
+                Bet(gamblers[0], betAmount, chosenSquirrel);
                 UpdateRaceButton();
             }
 
             else if (rdoGambler2.Checked)
             {
-                //Place bet for gamblers[1]
-                betSucceeded = gambler[1].PlaceBet((int)numUpDownBet.Value, (int)numUpDownSquirrel.Value);
-                if (betSucceeded)
-                {
-                    btnBet.Enabled = false;
-                    btnClearBet.Enabled = true;
-                }
-                else
-                {
-                    btnBet.Enabled = true;
-                    btnClearBet.Enabled = false;
-                    MessageBox.Show(gambler[1].Name + "does not have enough cash to make that bet!");
-                }
-
+                Bet(gamblers[1], betAmount, chosenSquirrel);
                 UpdateRaceButton();
             }
 
             else if (rdoGambler3.Checked)
             {
-                //Place bet for gamblers[2]
-                betSucceeded = gambler[2].PlaceBet((int)numUpDownBet.Value, (int)numUpDownSquirrel.Value);
-                if (betSucceeded)
-                {
-                    btnBet.Enabled = false;
-                    btnClearBet.Enabled = true;
-                }
-                else
-                {
-                    btnBet.Enabled = true;
-                    btnClearBet.Enabled = false;
-                    MessageBox.Show(gambler[2].Name + "does not have enough cash to make that bet!");
-                }
-
+                Bet(gamblers[2], betAmount, chosenSquirrel);
                 UpdateRaceButton();
             }
         }
 
         private void UpdateRaceButton()
         {
-            //If all gamblers have bet, enable race button
-            if (gambler[0].MyBet != null & gambler[1].MyBet != null & gambler[2].MyBet != null)
+            //Enable the race button only if all players have placed a bet
+
+            if (gamblers[0].MyBet != null & gamblers[1].MyBet != null & gamblers[2].MyBet != null)
             {
                 btnRace.Enabled = true;
             }
@@ -149,49 +150,29 @@ namespace Race_Track_Simulator
 
         private void rdoGambler1_CheckedChanged(object sender, EventArgs e)
         {
-            lblSelectedGambler.Text = gambler[0].Name;
-
-            //If player hasn't made a bet, show the bet button but hide the clear bet button
-            if (gambler[0].MyBet == null)
-            {
-                btnBet.Enabled = true;
-                btnClearBet.Enabled = false;
-            }
-            else
-            {
-                btnBet.Enabled = false;
-                btnClearBet.Enabled = true;
-            }
-
+            UpdateBetUI(gamblers[0]);
             UpdateRaceButton();
 
         }
 
         private void rdoGambler2_CheckedChanged(object sender, EventArgs e)
         {
-            lblSelectedGambler.Text = gambler[1].Name;
-
-            //If player hasn't made a bet, show the bet button but hide the clear bet button
-            if (gambler[1].MyBet == null)
-            {
-                btnBet.Enabled = true;
-                btnClearBet.Enabled = false;
-            }
-            else
-            {
-                btnBet.Enabled = false;
-                btnClearBet.Enabled = true;
-            }
-
+            UpdateBetUI(gamblers[1]);
             UpdateRaceButton();
         }
 
         private void rdoGambler3_CheckedChanged(object sender, EventArgs e)
         {
-            lblSelectedGambler.Text = gambler[2].Name;
+            UpdateBetUI(gamblers[2]);
+            UpdateRaceButton();
+        }
 
-            //If player hasn't made a bet, show the bet button but hide the clear bet button
-            if (gambler[2].MyBet == null)
+        private void UpdateBetUI(Gambler gambler)
+        {
+            //Render the Gambler's name and show or hide the Bet and Clear Bet buttons
+
+            lblSelectedGambler.Text = gambler.Name;
+            if (gambler.MyBet == null)
             {
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
@@ -201,40 +182,34 @@ namespace Race_Track_Simulator
                 btnBet.Enabled = false;
                 btnClearBet.Enabled = true;
             }
-
-            UpdateRaceButton();
         }
 
         private void btnClearBet_Click(object sender, EventArgs e)
         {
-            //Add Bet amount back to Gambler's cash
-            //Clear the bet
-            //Update the labels
-            //Enable bet button
-            //Disable clear bet button
-            //Disable race button
+            //Clears a gambler's bet by giving back the cash, clearing the bet object, and updating UI
+            //TODO FIX: after a player bets and lost a race, they can clear the previous bet which gives them back money they should have lost
 
             if (rdoGambler1.Checked)
             {
-                gambler[0].Cash += gambler[0].MyBet.Amount;
-                gambler[0].ClearBet();
-                gambler[0].UpdateLabels();
+                gamblers[0].Cash += gamblers[0].MyBet.Amount;
+                gamblers[0].ClearBet();
+                gamblers[0].UpdateLabels();
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
             }
             else if (rdoGambler2.Checked)
             {
-                gambler[1].Cash += gambler[1].MyBet.Amount;
-                gambler[1].ClearBet();
-                gambler[1].UpdateLabels();
+                gamblers[1].Cash += gamblers[1].MyBet.Amount;
+                gamblers[1].ClearBet();
+                gamblers[1].UpdateLabels();
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
             }
             else if (rdoGambler3.Checked)
             {
-                gambler[2].Cash += gambler[2].MyBet.Amount;
-                gambler[2].ClearBet();
-                gambler[2].UpdateLabels();
+                gamblers[2].Cash += gamblers[2].MyBet.Amount;
+                gamblers[2].ClearBet();
+                gamblers[2].UpdateLabels();
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
             }
