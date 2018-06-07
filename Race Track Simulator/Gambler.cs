@@ -10,7 +10,7 @@ namespace Race_Track_Simulator
     class Gambler
     {
         public string Name;
-        public Bet MyBet; //An instance of Bet() that has a gambler's bet
+        public Bet MyBet;
         public int Cash;
 
         //These fields are the gambler's GUI controls on the form
@@ -19,11 +19,17 @@ namespace Race_Track_Simulator
 
         public void UpdateLabels()
         {
+            //Updates the gambler UI to display their cash and bet info
+
             MyRadioButton.Text = Name + " has " + Cash + " bucks";
 
             if (MyBet == null)
             {
                 MyLabel.Text = Name + " hasn't placed a bet";
+            }
+            else
+            {
+                MyBet.GetDescription();
             }
         }
 
@@ -40,7 +46,6 @@ namespace Race_Track_Simulator
             //Return true if the gambler had enough money to bet
             if (MyBet.Amount <= Cash)
             {
-                Cash -= amount;
                 MyLabel.Text = MyBet.GetDescription();
                 UpdateLabels();
                 return true;

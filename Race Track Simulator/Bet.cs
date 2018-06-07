@@ -8,12 +8,14 @@ namespace Race_Track_Simulator
 {
     class Bet
     {
-        public int Amount; //The amount of cash that was bet
-        public int Squirrel; //The number of the squirrel the bet is on
-        public Gambler Bettor; //The guy who placed the bet
+        public int Amount;
+        public int Squirrel;
+        public Gambler Bettor;
 
         public string GetDescription()
         {
+            //Updates the bet UI to display what a gambler has/hasn't bet
+
             if (Amount != 0)
             {
                 return Bettor.Name + " bets " + Amount + " bucks on squirrel #" + Squirrel;
@@ -26,6 +28,8 @@ namespace Race_Track_Simulator
 
         public int PayOut(int winner)
         {
+            //Pays or collects the bet amount that a gambler placed
+
             if (winner == Squirrel)
             {
                 return Amount;

@@ -15,6 +15,7 @@ namespace Race_Track_Simulator
         Gambler[] gamblers = new Gambler[3];
         Squirrel[] squirrels = new Squirrel[4];
         Random randomizer = new Random(); //Ensures all of the Squirrel objects share a Random object to avoid an issue where all of the squirrels generate the same sequence of random numbers
+        //TODO Add tests to project
 
         public Form1()
         {
@@ -78,6 +79,7 @@ namespace Race_Track_Simulator
         private void UpdateSquirrelAndGamblerUI()
         {
             //Resets squirrel image to front of race line and gambler's cash/bet information
+            //TODO Opportunity to refactor code in Form.cs, Gambler.cs, Bet.cs, and Squirrel.cs that have UI update functionality
 
             foreach (Squirrel squirrel in squirrels)
             {
@@ -103,7 +105,7 @@ namespace Race_Track_Simulator
             {
                 btnBet.Enabled = true;
                 btnClearBet.Enabled = false;
-                MessageBox.Show(gambler.Name + "does not have enough cash to make that bet!");
+                MessageBox.Show(gambler.Name + " does not have enough cash to make that bet!");
             }
         }
 
@@ -152,7 +154,6 @@ namespace Race_Track_Simulator
         {
             UpdateBetUI(gamblers[0]);
             UpdateRaceButton();
-
         }
 
         private void rdoGambler2_CheckedChanged(object sender, EventArgs e)
@@ -187,11 +188,9 @@ namespace Race_Track_Simulator
         private void btnClearBet_Click(object sender, EventArgs e)
         {
             //Clears a gambler's bet by giving back the cash, clearing the bet object, and updating UI
-            //TODO FIX: after a player bets and lost a race, they can clear the previous bet which gives them back money they should have lost
 
             if (rdoGambler1.Checked)
             {
-                gamblers[0].Cash += gamblers[0].MyBet.Amount;
                 gamblers[0].ClearBet();
                 gamblers[0].UpdateLabels();
                 btnBet.Enabled = true;
@@ -199,7 +198,6 @@ namespace Race_Track_Simulator
             }
             else if (rdoGambler2.Checked)
             {
-                gamblers[1].Cash += gamblers[1].MyBet.Amount;
                 gamblers[1].ClearBet();
                 gamblers[1].UpdateLabels();
                 btnBet.Enabled = true;
@@ -207,7 +205,6 @@ namespace Race_Track_Simulator
             }
             else if (rdoGambler3.Checked)
             {
-                gamblers[2].Cash += gamblers[2].MyBet.Amount;
                 gamblers[2].ClearBet();
                 gamblers[2].UpdateLabels();
                 btnBet.Enabled = true;
