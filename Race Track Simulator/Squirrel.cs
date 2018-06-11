@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Race_Track_Simulator
 {
-    class Squirrel
+    public class Squirrel
     {
         public int StartingPosition; //Where the squirrel's PictureBox starts
         public int RacetrackLength;

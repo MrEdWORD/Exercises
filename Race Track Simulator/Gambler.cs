@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Race_Track_Simulator
 {
-    class Gambler
+    public class Gambler
     {
         public string Name;
         public Bet MyBet;
@@ -29,7 +29,7 @@ namespace Race_Track_Simulator
             }
             else
             {
-                MyBet.GetDescription();
+               MyLabel.Text = MyBet.GetDescription();
             }
         }
 

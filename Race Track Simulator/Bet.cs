@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Race_Track_Simulator
 {
-    class Bet
+   public class Bet
     {
         public int Amount;
         public int Squirrel;

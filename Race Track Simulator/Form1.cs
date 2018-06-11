@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Race_Track_Simulator
 {
-    public partial class Form1 : Form
+    partial class Form1 : Form
     {
         Gambler[] gamblers = new Gambler[3];
         Squirrel[] squirrels = new Squirrel[4];
@@ -81,6 +81,8 @@ namespace Race_Track_Simulator
             //Resets squirrel image to front of race line and gambler's cash/bet information
             //TODO Opportunity to refactor code in Form.cs, Gambler.cs, Bet.cs, and Squirrel.cs that have UI update functionality
 
+            lblMinBet.Text = String.Format("Minimum bet: ${0}", numUpDownBet.Minimum.ToString());
+
             foreach (Squirrel squirrel in squirrels)
             {
                 squirrel.TakeStartingPosition();
@@ -88,6 +90,7 @@ namespace Race_Track_Simulator
 
             foreach (Gambler gambler in gamblers)
             {
+                gambler.ClearBet();
                 gambler.UpdateLabels();
             }
         }
@@ -112,7 +115,6 @@ namespace Race_Track_Simulator
         private void btnBet_Click(object sender, EventArgs e)
         {
             //Places bet for a given gambler and updates the UI appropriately
-            //TODO FIX: player can keep betting/racing after they've lost enough where their cash is negative
             
             int betAmount = (int)numUpDownBet.Value;
             int chosenSquirrel = (int)numUpDownSquirrel.Value;
