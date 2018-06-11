@@ -40,6 +40,7 @@ namespace Race_Track_Simulator
         {
             StartRace();
             UpdateSquirrelAndGamblerUI();
+            UpdateRaceButton();
         }
 
         private void StartRace()
