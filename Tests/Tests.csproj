@@ -46,11 +46,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GamblerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SquirrelTests.cs" />
+    <Compile Include="BetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

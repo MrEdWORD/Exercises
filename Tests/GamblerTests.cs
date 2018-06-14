@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Tests
 {
+    //TODO Get feedback on common approaches for testing methods that are in the Form1.cs code. Probably
+    //need to make those kind of methods as a static, helper class?
+
     [TestClass]
     public class GamblerTests
     {
